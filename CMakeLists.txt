@@ -8,7 +8,8 @@ find_package(Qt6 REQUIRED COMPONENTS Widgets UiTools)
 qt_standard_project_setup()
 
 add_executable(diary
+   src/main_window.cpp
    src/main.cpp
-   src/main_window.cpp)
+   )
 
 target_link_libraries(diary Qt6::Widgets Qt6::UiTools)
