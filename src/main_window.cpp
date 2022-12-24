@@ -40,7 +40,7 @@ DiaryApp::DiaryApp()
    });
 
    // New diary (the editor) frame
-   QFile f2("../UI/newDiaryFrame.ui");
+   QFile f2("../UI/editDiaryFrame.ui");
    f2.open(QIODevice::ReadOnly);
    edit_diary_frame = (QFrame *) loader.load(&f2, mainWin);
    edit_diary_frame->hide();
