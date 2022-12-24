@@ -15,9 +15,9 @@ class DiaryApp {
 public: // static vars
    inline static constexpr int winW = 600;
    inline static constexpr int winH = 600;
-   inline static const std::string app_directory_name = ".diary";
+   inline static const QString app_directory_name = ".diary";
 public:
-   const std::string app_directory_full_path;
+   const QString app_directory_full_path;
 private:
    // Main window
    QMainWindow  *mainWin                = nullptr;
@@ -44,6 +44,6 @@ public:
 private:
    void switch_frame(QFrame *frame_to_show);
    void save_diary();
-   void load_diary(QString file_path);
+   void load_diary(const QString& file_path);
    void load_diaries();
 };
