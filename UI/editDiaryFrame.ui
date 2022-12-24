@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>newDiaryFrame</class>
- <widget class="QFrame" name="newDiaryFrame">
+ <class>editDiaryFrame</class>
+ <widget class="QFrame" name="editDiaryFrame">
   <property name="enabled">
    <bool>true</bool>
   </property>

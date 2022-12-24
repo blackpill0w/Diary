@@ -36,7 +36,7 @@ private:
    // Inside load_diary_frame
    QPushButton  *LDF_go_back_button     = nullptr;
    QWidget      *diaries_buttons_widget = nullptr;
-   std::vector< std::unique_ptr<QPushButton> > diaries{};
+   std::vector< std::shared_ptr<QPushButton> > diaries{};
 
 public:
    explicit DiaryApp();

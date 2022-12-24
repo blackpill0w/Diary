@@ -101,9 +101,15 @@ void DiaryApp::save_diary() {
 }
 
 void DiaryApp::load_diary(QString file_path) {
-//   assert(!edit_diary_frame.isHidden());
    std::cout << file_path.toStdString() << std::endl;
-
+   switch_frame(edit_diary_frame);
+   std::ifstream diary_file{ file_path.toStdString() };
+   std::string tmp{};
+   getline(diary_file, tmp);
+   diary_title_entry->insert(tmp.c_str());
+   while (getline(diary_file, tmp)) {
+      diary_body_entry->append(tmp.c_str());
+   }
 }
 
 void DiaryApp::load_diaries() {
@@ -111,18 +117,20 @@ void DiaryApp::load_diaries() {
    // Add a button for each diary file
    // Each button opens its correspinding file to edit
    for (const auto& diary_file: fs::directory_iterator(app_directory_full_path)) {
-      QPushButton *b = new QPushButton();
-      const QString file_path = std::string(diary_file.path()).c_str();
-      b->setText(file_path);
-      diaries_buttons_widget->layout()->addWidget(b);
-      QObject::connect(
-         b,
-         &QPushButton::clicked,
-         [&](){ load_diary(file_path); }
-      );
+      diaries.emplace_back( std::make_shared<QPushButton>() );
+      std::shared_ptr<QPushButton> b = diaries.back();
 
+      const QString file_path = std::string(diary_file.path()).c_str();
+      // /full/path/to/file/dd-MM-yyyy.txt -> dd-MM-yyyy
+      b->setText(file_path.sliced(file_path.length() - 14, 10));
+      diaries_buttons_widget->layout()->addWidget(b.get());
+      QObject::connect(
+         //b.get(),
+         b.get(),
+         &QPushButton::clicked,
+         [=](){ load_diary(file_path); }
+      );
       b->show();
-      diaries.emplace_back(b);
    }
    // Push everything to the top
    diaries_buttons_widget->layout()->setAlignment(Qt::AlignTop);
