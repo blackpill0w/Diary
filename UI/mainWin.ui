@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>665</width>
-    <height>475</height>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Diary</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">

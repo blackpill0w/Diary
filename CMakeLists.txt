@@ -4,7 +4,7 @@ project(diary CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Widgets UiTools)
+find_package(Qt6 REQUIRED COMPONENTS Core Widgets UiTools)
 qt_standard_project_setup()
 
 add_executable(diary
