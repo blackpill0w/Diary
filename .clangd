@@ -1,0 +1,10 @@
+CompileFlags:
+   Add: [
+      -std=c++20, -Wall, -Wextra,
+      -I/usr/include/qt6/QtUiTools, -I/usr/include/qt6, -DQT_UITOOLS_LIB,
+      -I/usr/include/qt6/QtCore, -I/usr/lib/qt6/mkspecs/linux-g++,
+      -I/usr/include/qt6/QtGui, -I/usr/include/qt6/QtWidgets,
+      -I/usr/include/qt6/QtOpenGLWidgets, -DQT_OPENGLWIDGETS_LIB,
+      -I/usr/include/qt6/QtOpenGL, -DQT_OPENGL_LIB, -DQT_WIDGETS_LIB, -DQT_GUI_LIB,
+      -I/usr/include/qt6/QtNetwork, -DQT_NETWORK_LIB, -DQT_CORE_LIB
+   ]

@@ -7,13 +7,16 @@
 #include <QTextStream>
 #include <QStringList>
 #include <QFile>
-#include <QDir>
 #include <QLayout>
 #include <QDate>
 
 DiaryApp::DiaryApp()
-: app_directory_full_path{QDir::homePath() + QDir::separator() + app_directory_name}
 {
+   // Create app's directory if necessary
+   if (!QDir(app_directory_full_path).exists())
+   {
+      QDir().mkdir(app_directory_full_path);
+   }
    // Initialize variables
    diaries.reserve(16);
    // Load frame
@@ -86,7 +89,7 @@ void DiaryApp::switch_frame(QFrame *frame_to_show) {
 }
 
 void DiaryApp::save_diary() {
-   assert(!edit_diary_frame.isHidden());
+   assert(!edit_diary_frame->isHidden());
    const QString file_path {
       app_directory_full_path
       + QDir::separator()
@@ -119,7 +122,7 @@ void DiaryApp::load_diary(const QString& file_path) {
 }
 
 void DiaryApp::load_diaries() {
-   assert(!load_diary_frame.isHidden());
+   assert(!load_diary_frame->isHidden());
    while (diaries_buttons_widget->layout()->count() != 0) {
       diaries_buttons_widget->layout()->removeItem(diaries_buttons_widget->layout()->itemAt(0));
    }
